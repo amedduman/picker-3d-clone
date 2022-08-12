@@ -11,6 +11,17 @@
         [SerializeField] [Min(0)] float _horizontalMoveLimit = 5;
         Rigidbody _rb;
         float _mouseX;
+        float _actualPickerSpeed;
+
+        void OnEnable()
+        {
+            GameManager.Instance.OnGameStart += Move;
+        }
+
+        void OnDisable()
+        {
+            GameManager.Instance.OnGameStart -= Move;
+        }
 
         void Start()
         {
@@ -32,10 +43,18 @@
         void FixedUpdate()
         {
             float x = _mouseX * Time.deltaTime * _horizontalMoveSensitivity + _rb.position.x; 
-            // _rb.position += new Vector3(_mouseX * Time.deltaTime * _horizontalMoveSensitivity, 0, _speed * Time.deltaTime);
             x = Mathf.Clamp(x, -_horizontalMoveLimit, _horizontalMoveLimit);
-            _rb.position = new Vector3(x, _rb.position.y, _rb.position.z + _speed * Time.deltaTime);
-            // _rb.position += new Vector3(0, 0, _speed * Time.deltaTime);
+            _rb.position = new Vector3(x, _rb.position.y, _rb.position.z + _actualPickerSpeed * Time.deltaTime);
+        }
+
+        void Move()
+        {
+            _actualPickerSpeed = _speed;
+        }
+
+        void Stop()
+        {
+            _actualPickerSpeed = 0;
         }
     }
 
