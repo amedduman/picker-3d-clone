@@ -1,13 +1,13 @@
 ﻿namespace Picker3d
 {
     using System;
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
 
     public class GameManager : Singleton<GameManager>
     {
         public event Action OnGameStart;
+        public event Action OnLevelPassed;
+        public event Action OnLevelFailed;
         bool _hasGameStart;
 
         void Update()
@@ -20,6 +20,16 @@
                     OnGameStart?.Invoke();
                 }
             }
+        }
+
+        public void LevelPassed()
+        {
+            OnLevelPassed?.Invoke();
+        }
+
+        public void LevelFailed()
+        {
+            OnLevelFailed?.Invoke();
         }
     }
 

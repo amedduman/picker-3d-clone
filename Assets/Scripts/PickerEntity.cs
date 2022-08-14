@@ -1,14 +1,14 @@
 ﻿namespace Picker3d
 {
-    using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
+    using DG.Tweening;
 
     public class PickerEntity : MonoBehaviour
     {
         [SerializeField] float _speed = 10;
         [SerializeField] float _horizontalMoveSensitivity = 10;
         [SerializeField] [Min(0)] float _horizontalMoveLimit = 5;
+        [SerializeField] Rigidbody _pusher;
         Rigidbody _rb;
         float _mouseX;
         float _actualPickerSpeed;
@@ -52,9 +52,14 @@
             _actualPickerSpeed = _speed;
         }
 
-        void Stop()
+        public void Stop()
         {
             _actualPickerSpeed = 0;
+        }
+
+        public void PushCollectables()
+        {
+            _pusher.DOMove(new Vector3(_pusher.position.x, _pusher.position.y, _pusher.position.z + 1), GameValues.PickerPushCollectablesTime);
         }
     }
 
