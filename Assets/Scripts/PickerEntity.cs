@@ -1,5 +1,6 @@
 ﻿namespace Picker3d
-{
+{   
+    using System.Collections;
     using UnityEngine;
     using DG.Tweening;
 
@@ -16,11 +17,13 @@
         void OnEnable()
         {
             GameManager.Instance.OnGameStart += Move;
+            GameManager.Instance.OnNextLevelReady += Move;
         }
 
         void OnDisable()
         {
             GameManager.Instance.OnGameStart -= Move;
+            GameManager.Instance.OnNextLevelReady -= Move;
         }
 
         void Start()
@@ -37,6 +40,11 @@
             else
             {
                 _mouseX = 0;
+            }
+
+            if(Input.GetKeyDown(KeyCode.A))
+            {
+                PushCollectables();
             }
         }
 
@@ -59,7 +67,8 @@
 
         public void PushCollectables()
         {
-            _pusher.DOMove(new Vector3(_pusher.position.x, _pusher.position.y, _pusher.position.z + 1), GameValues.PickerPushCollectablesTime);
+            _pusher.position = transform.position;
+            _pusher.DOMoveZ(_pusher.position.z + 1, GameValues.PickerPushCollectablesTime);
         }
     }
 

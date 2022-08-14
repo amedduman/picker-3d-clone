@@ -9,24 +9,34 @@
         [SerializeField] int _necessaryCollectableCount = 10;
         [SerializeField] TextMeshPro _collectedCollectableCountText;
         [SerializeField] TextMeshPro _targetCollectableCountText;
+        [SerializeField] GameObject _ground;
+        [SerializeField] float _groundMoveYAmount = 1;
+        [SerializeField] Collider _pickerTrigger;
+        [SerializeField] Collider[] _colliders;
         int _collectedCollectable;
         bool _hasCalledForLevelFailCheck;
-        // Start is called before the first frame update
-        void Start()
+
+        void OnEnable()
         {
-            _collectedCollectableCountText.text = "0";
+            GameManager.Instance.OnNextLevelButtonPressed += HandleNextLevelButtonPressed;
         }
 
-        // Update is called once per frame
-        void Update()
+        void OnDisable()
         {
+            GameManager.Instance.OnNextLevelButtonPressed -= HandleNextLevelButtonPressed;
+        }
 
+        void Start()
+        {
+            _targetCollectableCountText.text = _necessaryCollectableCount.ToString();
+            _collectedCollectableCountText.text = "0";
         }
 
         void OnTriggerEnter(Collider other)
         {
             if(other.TryGetComponent(out PickerEntity picker))
             {
+                _pickerTrigger.enabled = false;
                 picker.Stop();
                 picker.PushCollectables();
             }
@@ -66,9 +76,14 @@
            return _collectedCollectable >= _necessaryCollectableCount;
         }
 
-        void UpdateCollectedCountText()
+        void HandleNextLevelButtonPressed()
         {
+            foreach (var coll in _colliders)
+            {
+                coll.enabled = false;
+            }
 
+            _ground.transform.DOLocalMoveY(_groundMoveYAmount, .7f).OnComplete(()=> GameManager.Instance.NextLevelReady());
         }
     }
 

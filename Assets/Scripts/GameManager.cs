@@ -8,6 +8,9 @@
         public event Action OnGameStart;
         public event Action OnLevelPassed;
         public event Action OnLevelFailed;
+        public event Action OnTryAgainButtonPressed;
+        public event Action OnNextLevelButtonPressed;
+        public event Action OnNextLevelReady;
         bool _hasGameStart;
 
         void Update()
@@ -30,6 +33,21 @@
         public void LevelFailed()
         {
             OnLevelFailed?.Invoke();
+        }
+
+        public void TryAgainButtonAction()
+        {
+            OnTryAgainButtonPressed?.Invoke();
+        }
+
+        public void NextLevelButtonAction()
+        {
+            OnNextLevelButtonPressed?.Invoke();
+        }
+
+        public void NextLevelReady()
+        {
+            OnNextLevelReady?.Invoke();
         }
     }
 
