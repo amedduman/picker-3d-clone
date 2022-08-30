@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2452411521832423259}
   - component: {fileID: 2452411521832423268}
   m_Layer: 0
-  m_Name: TapToPlay_text
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,15 +66,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: Tap To Play
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ee7c67084b09b44549a37d08f25f2e6b, type: 2}
+  m_sharedMaterial: {fileID: 2897129016741131963, guid: ee7c67084b09b44549a37d08f25f2e6b,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278207231
+  m_fontColor: {r: 1, g: 0.25797725, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -91,7 +92,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 172
+  m_fontSize: 126.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

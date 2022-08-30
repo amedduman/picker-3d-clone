@@ -33,6 +33,12 @@
             _collectedCollectableCountText.text = "0";
         }
 
+        void OnDestroy()
+        {
+            DOTween.Kill(_ground.transform); 
+        }
+
+        // BUG:  sifir collectable ile gelirse again butonu cikmiyor
         void OnTriggerEnter(Collider other)
         {
             if(other.TryGetComponent(out PickerEntity picker))

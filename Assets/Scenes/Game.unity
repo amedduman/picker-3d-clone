@@ -166,8 +166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelListSo: {fileID: 11400000, guid: 79b37706fcec0429394cf4cc9bc9e793, type: 2}
-  _levelCountToLoadAtSameTime: 14
-  _isDebug: 1
+  _levelCountToLoadAtSameTime: 3
+  _isDebug: 0
   _activeLevelIndex: 20
 --- !u!1001 &394307827
 PrefabInstance:
@@ -941,8 +941,8 @@ Camera:
   m_GameObject: {fileID: 1865024670}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.5330188, g: 0.7339287, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

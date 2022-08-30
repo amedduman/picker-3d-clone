@@ -13,6 +13,7 @@
         [SerializeField] [Range(0, 100)] int _activeLevelIndex; 
 
         string _levelIndexKey = "levelIndex";
+        List<LevelEntity> _loadedLevels = new List<LevelEntity>();
 
         void OnEnable()
         {
@@ -37,6 +38,8 @@
                 Vector3 levelSpawnPoint = i == 0 ? Vector3.zero : previousLevel.LevelEnd.position;
                 LevelEntity instantiatedLevel =  Instantiate(levelPrefabToLoad, levelSpawnPoint, Quaternion.identity);
 
+                _loadedLevels.Add(instantiatedLevel);
+
                 previousLevel = instantiatedLevel;
                 levelIndex++;
             }
@@ -55,7 +58,16 @@
 
         void LevelPassed()
         {
+            _activeLevelIndex++;
+            if(_activeLevelIndex == 1) return;
 
+            // unload passed level
+            LevelEntity unloadedLevel =  _loadedLevels[0];
+            _loadedLevels.RemoveAt(0);
+            Destroy(unloadedLevel.gameObject);
+
+            // load new level
+            
         }
     }
 
