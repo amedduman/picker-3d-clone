@@ -15,6 +15,7 @@
         [SerializeField] Collider[] _colliders;
         int _collectedCollectable;
         bool _hasCalledForLevelFailCheck;
+        bool _isActive;
 
         void OnEnable()
         {
@@ -36,6 +37,7 @@
         {
             if(other.TryGetComponent(out PickerEntity picker))
             {
+                _isActive = true;
                 _pickerTrigger.enabled = false;
                 picker.Stop();
                 picker.PushCollectables();
@@ -78,6 +80,7 @@
 
         void HandleNextLevelButtonPressed()
         {
+            if(!_isActive) return;
             foreach (var coll in _colliders)
             {
                 coll.enabled = false;
