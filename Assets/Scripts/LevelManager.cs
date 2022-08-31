@@ -10,8 +10,9 @@
         [SerializeField] LevelListData _levelListSo;
         [SerializeField][Range(2, 15)] int _levelCountToLoadAtSameTime = 3;
         [SerializeField] bool _isDebug;
-        [SerializeField][Range(0, 100)] int _activeLevelIndex;
+        [SerializeField] [Range(1, 100)] int _levelToLoadInDebugMode = 1;
 
+        int _activeLevelIndex;
         string _levelIndexKey = "levelIndex";
         List<LevelEntity> _loadedLevels = new List<LevelEntity>();
         int unloadedLevelDestroyDelay = 3;
@@ -27,7 +28,16 @@
 #if !UNITY_EDITOR
             _isDebug = false;
 #endif
-            if (!_isDebug) _activeLevelIndex = PlayerPrefs.GetInt(_levelIndexKey, 0);
+            if (_isDebug)
+            {
+                _activeLevelIndex = _levelToLoadInDebugMode - 1;
+                PlayerPrefs.SetInt(_levelIndexKey, _activeLevelIndex);
+            }
+            else
+            {
+                _activeLevelIndex = PlayerPrefs.GetInt(_levelIndexKey, 0);
+            }
+
             int levelIndex = _activeLevelIndex;
             LevelEntity previousLevel = null;
             LevelEntity levelPrefabToLoad = null;

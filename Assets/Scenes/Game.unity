@@ -168,7 +168,7 @@ MonoBehaviour:
   _levelListSo: {fileID: 11400000, guid: 79b37706fcec0429394cf4cc9bc9e793, type: 2}
   _levelCountToLoadAtSameTime: 4
   _isDebug: 0
-  _activeLevelIndex: 4
+  _levelToLoadInDebugMode: 1
 --- !u!1001 &394307827
 PrefabInstance:
   m_ObjectHideFlags: 0
