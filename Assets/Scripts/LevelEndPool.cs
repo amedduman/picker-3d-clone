@@ -47,17 +47,23 @@
                 _pickerTrigger.enabled = false;
                 picker.Stop();
                 picker.PushCollectables();
+
+                if(!_hasCalledForLevelFailCheck) 
+                {
+                    _hasCalledForLevelFailCheck = true;
+                    DOVirtual.DelayedCall(GameValues.WaitForLevelEndResult, ()=> LevelFailCheck());
+                }
             }
 
             if(other.TryGetComponent(out CollectableEntity collectable))
             {
                 if(collectable.HasCounted) return;
 
-                if(!_hasCalledForLevelFailCheck)
-                {
-                    _hasCalledForLevelFailCheck = true;
-                    DOVirtual.DelayedCall(GameValues.WaitForLevelEndResult, ()=> LevelFailCheck());
-                }
+                // if(!_hasCalledForLevelFailCheck)
+                // {
+                //     _hasCalledForLevelFailCheck = true;
+                //     DOVirtual.DelayedCall(GameValues.WaitForLevelEndResult, ()=> LevelFailCheck());
+                // }
 
                 collectable.HasCounted = true;
 
