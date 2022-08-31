@@ -66,34 +66,20 @@
             _loadedLevels.RemoveAt(0);
             Destroy(unloadedLevel.gameObject);
 
-            // load new level
-            Debug.Log(_activeLevelIndex);
-
+            // get next level
             int passedLevelIndex = _activeLevelIndex - 1;
-
-            Debug.Log(passedLevelIndex);
-
-            // load next level
-
             LevelEntity levelPrefabToLoad = null;
-
             if (passedLevelIndex < _levelListSo.Levels.Length - 1)
             {
-                Debug.Log(passedLevelIndex);
                 levelPrefabToLoad = _levelListSo.Levels[passedLevelIndex + 1];
-                // Vector3 levelSpawnPoint = _loadedLevels[_loadedLevels.Count -1].LevelEnd.position;
-                // LevelEntity instantiatedLevel =  Instantiate(levelPrefabToLoad, levelSpawnPoint, Quaternion.identity);
-                // _loadedLevels.Add(instantiatedLevel);
             }
-            // we run out levels, load a random level
+            // we run out levels, get a random level
             else
             {
                 levelPrefabToLoad = _levelListSo.GetRandomLevel();
-                // Vector3 levelSpawnPoint = _loadedLevels[_loadedLevels.Count - 1].LevelEnd.position;
-                // LevelEntity instantiatedLevel = Instantiate(levelPrefabToLoad, levelSpawnPoint, Quaternion.identity);
-                // _loadedLevels.Add(instantiatedLevel);
             }
 
+            // load the level
             Vector3 levelSpawnPoint = _loadedLevels[_loadedLevels.Count - 1].LevelEnd.position;
             LevelEntity instantiatedLevel = Instantiate(levelPrefabToLoad, levelSpawnPoint, Quaternion.identity);
             _loadedLevels.Add(instantiatedLevel);
