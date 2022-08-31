@@ -38,7 +38,6 @@
             DOTween.Kill(_ground.transform); 
         }
 
-        // BUG:  sifir collectable ile gelirse again butonu cikmiyor
         void OnTriggerEnter(Collider other)
         {
             if(other.TryGetComponent(out PickerEntity picker))
@@ -58,12 +57,6 @@
             if(other.TryGetComponent(out CollectableEntity collectable))
             {
                 if(collectable.HasCounted) return;
-
-                // if(!_hasCalledForLevelFailCheck)
-                // {
-                //     _hasCalledForLevelFailCheck = true;
-                //     DOVirtual.DelayedCall(GameValues.WaitForLevelEndResult, ()=> LevelFailCheck());
-                // }
 
                 collectable.HasCounted = true;
 
