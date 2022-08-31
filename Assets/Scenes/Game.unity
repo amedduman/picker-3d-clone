@@ -167,7 +167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelListSo: {fileID: 11400000, guid: 79b37706fcec0429394cf4cc9bc9e793, type: 2}
   _levelCountToLoadAtSameTime: 4
-  _isDebug: 0
+  _isDebug: 1
   _activeLevelIndex: 20
 --- !u!1001 &394307827
 PrefabInstance:

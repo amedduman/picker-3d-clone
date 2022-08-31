@@ -14,6 +14,7 @@
 
         string _levelIndexKey = "levelIndex";
         List<LevelEntity> _loadedLevels = new List<LevelEntity>();
+        int unloadedLevelDestroyDelay = 3;
 
         void OnEnable()
         {
@@ -27,7 +28,6 @@
             _isDebug = false;
 #endif
             if (!_isDebug) _activeLevelIndex = PlayerPrefs.GetInt(_levelIndexKey, 0);
-
             int levelIndex = _activeLevelIndex;
             LevelEntity previousLevel = null;
             LevelEntity levelPrefabToLoad = null;
@@ -59,12 +59,13 @@
         void LevelPassed()
         {
             _activeLevelIndex++;
-            if (_activeLevelIndex == 1) return;
+            PlayerPrefs.SetInt(_levelIndexKey, _activeLevelIndex);
+            // if (_activeLevelIndex == 1) return;
 
             // unload passed level
             LevelEntity unloadedLevel = _loadedLevels[0];
             _loadedLevels.RemoveAt(0);
-            Destroy(unloadedLevel.gameObject);
+            Destroy(unloadedLevel.gameObject, unloadedLevelDestroyDelay);
 
             // get next level
             int passedLevelIndex = _activeLevelIndex - 1;
