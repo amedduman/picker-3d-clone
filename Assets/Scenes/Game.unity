@@ -167,8 +167,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelListSo: {fileID: 11400000, guid: 79b37706fcec0429394cf4cc9bc9e793, type: 2}
   _levelCountToLoadAtSameTime: 4
-  _isDebug: 1
-  _activeLevelIndex: 20
+  _isDebug: 0
+  _activeLevelIndex: 4
 --- !u!1001 &394307827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -497,12 +497,12 @@ PrefabInstance:
     - target: {fileID: 9088298425957180484, guid: 4eae05871c30a41bda1dbecdfea0dd4b,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016226014
+      value: -0.000000016226014
       objectReference: {fileID: 0}
     - target: {fileID: 9088298425957180484, guid: 4eae05871c30a41bda1dbecdfea0dd4b,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000005725037
+      value: 0.000000005725037
       objectReference: {fileID: 0}
     - target: {fileID: 9088298425957180484, guid: 4eae05871c30a41bda1dbecdfea0dd4b,
         type: 3}
@@ -982,7 +982,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865024670}
-  m_LocalRotation: {x: 0.3327275, y: 0.000000016226014, z: -0.000000005725037, w: 0.943023}
+  m_LocalRotation: {x: 0.3327275, y: -0.000000016226014, z: 0.000000005725037, w: 0.943023}
   m_LocalPosition: {x: -2.2585707, y: 4.9624696, z: -54.033527}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
