@@ -80,7 +80,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82553a1618000418da5ce150caf36835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _keyGenerator: {fileID: 11400000, guid: 624b65ec5314f4953a4aed1135f0eb10, type: 2}
   LevelEnd: {fileID: 6058768424724204918}
+  Key: 309449
 --- !u!1001 &8958315253634447813
 PrefabInstance:
   m_ObjectHideFlags: 0
