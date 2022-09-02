@@ -101,9 +101,9 @@
 
             // get next level
             LevelEntity levelPrefabToLoad = null;
-            if (_passedLevelCount <= _levelListSo.Levels.Count - 1) 
+            if (_passedLevelCount -1 + _levelCountToLoadAtSameTime <= _levelListSo.Levels.Count - 1) 
             {
-                levelPrefabToLoad = _levelListSo.Levels[_activeLevelIndex];
+                levelPrefabToLoad = _levelListSo.Levels[_passedLevelCount -1 + _levelCountToLoadAtSameTime];
             }
             // we run out levels, get a random level
             else
