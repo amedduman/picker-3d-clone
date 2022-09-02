@@ -33,6 +33,7 @@
 
         void Update()
         {
+            if(_actualPickerSpeed == 0) return; // don't move left or right when stopping 
             if(Input.GetMouseButton(0))
             {
                 _mouseX = Input.GetAxis("Mouse X");
