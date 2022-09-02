@@ -50,6 +50,8 @@
                 _passedLevelCount = PlayerPrefs.GetInt(_passedLevelCountKey, 0);
             }
 
+            GameManager.Instance.LevelCountChanged(_passedLevelCount + 1);
+
             int levelIndex = _activeLevelIndex;
             LevelEntity previousLevel = null;
             LevelEntity levelPrefabToLoad = null;
@@ -89,6 +91,8 @@
         void LevelPassed()
         {
             _passedLevelCount++;
+
+            GameManager.Instance.LevelCountChanged(_passedLevelCount + 1);
 
             // unload passed level
             LevelEntity unloadedLevel = _loadedLevels[0];

@@ -11,6 +11,7 @@
         public event Action OnTryAgainButtonPressed;
         public event Action OnNextLevelButtonPressed;
         public event Action OnNextLevelReady;
+        public event Action<int> OnPassedLevelCountChanged;
         bool _hasGameStart;
 
         void Update()
@@ -48,6 +49,11 @@
         public void NextLevelReady()
         {
             OnNextLevelReady?.Invoke();
+        }
+
+        public void LevelCountChanged(int level)
+        {
+            OnPassedLevelCountChanged?.Invoke(level);
         }
     }
 
