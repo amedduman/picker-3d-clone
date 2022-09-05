@@ -1,16 +1,13 @@
 ﻿namespace Picker3d
 {
     using System.Linq;
-    using System;
     using System.Collections;
-    using System.Collections.Generic;
     using UnityEngine;
     using Sirenix.OdinInspector;
     using UnityEditor;
 
     public class LevelEditorManager : MonoBehaviour
     {
-        public int NewValue = 1;
         [SerializeField] LevelEditorModes _mode = LevelEditorModes.Generate;
 
         [ValueDropdown(nameof(GetAllLevels), IsUniqueList = true)]
@@ -46,6 +43,7 @@
         [Button]
         void LoadLevel()
         {
+            // remove existing levels
             var levels = FindObjectsOfType<LevelEntity>(); 
             if (levels.Length > 0)
             {
@@ -63,7 +61,6 @@
         [Button]
         void ApplyChangesToPrefab()
         {
-            _loadedLevel.GetComponent<LevelEntity>().test = NewValue;
             PrefabUtility.ApplyPrefabInstance(_loadedLevel, InteractionMode.UserAction);
         }
     }
