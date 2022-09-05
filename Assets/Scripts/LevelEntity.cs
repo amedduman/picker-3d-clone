@@ -7,6 +7,7 @@
 
     public class LevelEntity : MonoBehaviour
     {
+        public int test = 5;
         [SerializeField] LevelKeyGenerator _keyGenerator;
         public Transform LevelEnd;
         [ReadOnly] public int Key = -1;
