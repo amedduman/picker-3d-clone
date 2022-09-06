@@ -11,11 +11,16 @@
         [SerializeField] LevelEditorModes _mode = LevelEditorModes.Generate;
 
         [ValueDropdown(nameof(GetAllLevels), IsUniqueList = true)]
-        [HideIf(nameof(_isGenerating))]
-        [SerializeField] GameObject _levelPrefab;
+        [HideIf(nameof(_isGenerating))] [SerializeField]
+         GameObject _levelPrefab;
+
+        [ValueDropdown(nameof(GetAllLevels), IsUniqueList = true)]
+        [ShowIf(nameof(_isGenerating))] [SerializeField]
+        GameObject _levelPrefabToGenerateFrom;
 
         bool _isGenerating;
         GameObject _loadedLevel;
+        GameObject _generatedLevel;
 
         private static IEnumerable GetAllLevels()
         {
@@ -36,6 +41,31 @@
         void OnValidate()
         {
             _isGenerating = _mode == LevelEditorModes.Generate ? true : false;
+        }
+
+        [PropertySpace(10)]
+        [ShowIf(nameof(_isGenerating))]
+        [Button]
+        void GenerateLevel()
+        {
+            _generatedLevel = PrefabUtility.InstantiatePrefab(_levelPrefabToGenerateFrom) as GameObject;
+        }
+
+        [PropertySpace(10)]
+        [ShowIf(nameof(_isGenerating))]
+        [Button]
+        void SaveNewLevel()
+        {
+            bool levelGenerated = false;
+
+            string localPath = "Assets/Tests/" + _generatedLevel.name + ".prefab";
+
+            localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
+
+            PrefabUtility.SaveAsPrefabAsset(_generatedLevel, localPath, out levelGenerated);
+
+            if(levelGenerated) Debug.Log($"{_generatedLevel.name} created!");
+            else Debug.LogWarning($"A problem occurred while trying to generate {_generatedLevel.name}");
         }
 
         [PropertySpace(10)]
