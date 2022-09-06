@@ -121,7 +121,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &1236073967
+--- !u!1 &1681629455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1681629457}
+  - component: {fileID: 1681629456}
+  m_Layer: 0
+  m_Name: LevelEditorManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1681629456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681629455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095307b45e8104afca20f46b4f5fa50a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 0
+  _levelList: {fileID: 11400000, guid: 79b37706fcec0429394cf4cc9bc9e793, type: 2}
+  _levelPrefab: {fileID: 2295860527659585471, guid: a85e3362d5e0440be89c33eae34483a5,
+    type: 3}
+  _levelPrefabToGenerateFrom: {fileID: 8958315254126580687, guid: eebbec2da34964574bcf29e20cd6a9ce,
+    type: 3}
+--- !u!4 &1681629457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1681629455}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 391.82254, y: 1351.5548, z: -6122.0396}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1723642508
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -131,12 +180,7 @@ PrefabInstance:
     - target: {fileID: 1439055428148367378, guid: eebbec2da34964574bcf29e20cd6a9ce,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1439055428148367378, guid: eebbec2da34964574bcf29e20cd6a9ce,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 33.8
+      value: -12.5
       objectReference: {fileID: 0}
     - target: {fileID: 8958315254126580686, guid: eebbec2da34964574bcf29e20cd6a9ce,
         type: 3}
@@ -200,51 +244,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eebbec2da34964574bcf29e20cd6a9ce, type: 3}
---- !u!1 &1681629455
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1681629457}
-  - component: {fileID: 1681629456}
-  m_Layer: 0
-  m_Name: LevelEditorManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1681629456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681629455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 095307b45e8104afca20f46b4f5fa50a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mode: 0
-  _levelPrefab: {fileID: 2295860527659585471, guid: a85e3362d5e0440be89c33eae34483a5,
-    type: 3}
-  _levelPrefabToGenerateFrom: {fileID: 8958315254126580687, guid: eebbec2da34964574bcf29e20cd6a9ce,
-    type: 3}
---- !u!4 &1681629457
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1681629455}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 391.82254, y: 1351.5548, z: -6122.0396}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

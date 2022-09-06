@@ -13,7 +13,7 @@
 
 
         [Button]
-        void GenerateKey()
+        public void GenerateKey()
         {
             Key = _keyGenerator.GenerateUniqueKey(this);
         }

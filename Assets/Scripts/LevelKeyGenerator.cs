@@ -38,6 +38,13 @@
             return KeyLevelPairs[index].LevelKey;
         }
 
+        [Button]
+        void ClearData()
+        {
+            KeyLevelPairs.Clear();
+            keys.Clear();
+        }
+
         [System.Serializable]
         class KeyLevelData
         {

@@ -8,7 +8,11 @@
 
     public class LevelEditorManager : MonoBehaviour
     {
+        [InfoBox("There should be a Assets/Levels folder for this Level Editor function right.", InfoMessageType.Info)]
         [SerializeField] LevelEditorModes _mode = LevelEditorModes.Generate;
+
+        [ShowIf(nameof(_isGenerating))] [FoldoutGroup("Required")] [SerializeField]
+        LevelListData _levelList;
 
         [ValueDropdown(nameof(GetAllLevels), IsUniqueList = true)]
         [HideIf(nameof(_isGenerating))] [SerializeField]
@@ -48,6 +52,8 @@
         [Button]
         void GenerateLevel()
         {
+            RemoveExistingLevels();
+
             _generatedLevel = PrefabUtility.InstantiatePrefab(_levelPrefabToGenerateFrom) as GameObject;
         }
 
@@ -58,14 +64,24 @@
         {
             bool levelGenerated = false;
 
-            string localPath = "Assets/Tests/" + _generatedLevel.name + ".prefab";
+            string localPath = "Assets/Levels/" + _generatedLevel.name + ".prefab";
 
             localPath = AssetDatabase.GenerateUniqueAssetPath(localPath);
 
             PrefabUtility.SaveAsPrefabAsset(_generatedLevel, localPath, out levelGenerated);
 
-            if(levelGenerated) Debug.Log($"{_generatedLevel.name} created!");
-            else Debug.LogWarning($"A problem occurred while trying to generate {_generatedLevel.name}");
+            if(levelGenerated)
+            {
+                Debug.Log("level generated!");
+
+                GameObject generatedLevelPrefab = AssetDatabase.LoadAssetAtPath<GameObject>(localPath);
+                _levelList.Levels.Add(generatedLevelPrefab.GetComponent<LevelEntity>());
+                generatedLevelPrefab.GetComponent<LevelEntity>().GenerateKey();
+            } 
+            else 
+            {
+                Debug.LogWarning($"A problem occurred while trying to generate {_generatedLevel.name}");
+            }
         }
 
         [PropertySpace(10)]
@@ -73,7 +89,13 @@
         [Button]
         void LoadLevel()
         {
-            // remove existing levels
+            RemoveExistingLevels();
+
+            _loadedLevel = PrefabUtility.InstantiatePrefab(_levelPrefab) as GameObject;
+        }
+
+        void RemoveExistingLevels()
+        {
             var levels = FindObjectsOfType<LevelEntity>(); 
             if (levels.Length > 0)
             {
@@ -82,8 +104,6 @@
                     DestroyImmediate(levels[i].gameObject); 
                 }
             }
-
-            _loadedLevel = PrefabUtility.InstantiatePrefab(_levelPrefab) as GameObject;
         }
 
         [PropertySpace(10)]
