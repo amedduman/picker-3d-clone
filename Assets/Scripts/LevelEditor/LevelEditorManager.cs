@@ -48,6 +48,16 @@
         }
 
         [PropertySpace(10)]
+        [HideIf(nameof(_isGenerating))]
+        [Button]
+        void LoadLevel()
+        {
+            RemoveExistingLevels();
+
+            _loadedLevel = PrefabUtility.InstantiatePrefab(_levelPrefab) as GameObject;
+        }
+
+        [PropertySpace(10)]
         [ShowIf(nameof(_isGenerating))]
         [Button]
         void GenerateLevel()
@@ -55,6 +65,12 @@
             RemoveExistingLevels();
 
             _generatedLevel = PrefabUtility.InstantiatePrefab(_levelPrefabToGenerateFrom) as GameObject;
+        }
+
+        [Button]
+        void RemoveLevelWithoutSaving()
+        {
+            RemoveExistingLevels();
         }
 
         [PropertySpace(10)]
@@ -66,6 +82,10 @@
             if(length < 0) length = 10;
             var roadScale = level.Road.transform.localScale;
             level.Road.transform.localScale = new Vector3(roadScale.x, roadScale.y, length); 
+
+            Vector3 lvlEndPos = level.LevelEndPoolObject.position;
+            lvlEndPos.z = level.Road.transform.position.z + length;
+            level.LevelEndPoolObject.position = lvlEndPos;
         }    
 
         LevelEntity GetLevel()
@@ -103,15 +123,7 @@
             RemoveExistingLevels();
         }
 
-        [PropertySpace(10)]
-        [HideIf(nameof(_isGenerating))]
-        [Button]
-        void LoadLevel()
-        {
-            RemoveExistingLevels();
-
-            _loadedLevel = PrefabUtility.InstantiatePrefab(_levelPrefab) as GameObject;
-        }
+        
 
         void RemoveExistingLevels()
         {
