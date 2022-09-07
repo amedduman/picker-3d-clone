@@ -81,7 +81,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _keyGenerator: {fileID: 11400000, guid: 624b65ec5314f4953a4aed1135f0eb10, type: 2}
   LevelEnd: {fileID: 2172932931919557070}
-  Key: 70906
+  Key: 245599
 --- !u!1001 &3843739531631604323
 PrefabInstance:
   m_ObjectHideFlags: 0

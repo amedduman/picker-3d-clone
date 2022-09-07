@@ -12,7 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4efe0a570f72d4d3a9177e2f97fc8ce3, type: 3}
   m_Name: LevelKeyGenerator
   m_EditorClassIdentifier: 
-  keys: c1850300
+  keys: e34c06005fbf0300802d0d0011a80600c0730c0027290300
   KeyLevelPairs:
+  - Level: {fileID: 7758293358673233863, guid: a85e3362d5e0440be89c33eae34483a5, type: 3}
+    LevelKey: 412899
+  - Level: {fileID: 5317289038868899142, guid: 4c28d36a5fdfc4d0d93627407230d370, type: 3}
+    LevelKey: 245599
+  - Level: {fileID: 1622085126500170242, guid: 4f357d6182b674bab9a4b16d856c4fbc, type: 3}
+    LevelKey: 863616
+  - Level: {fileID: 1622085126500170242, guid: eebbec2da34964574bcf29e20cd6a9ce, type: 3}
+    LevelKey: 436241
+  - Level: {fileID: 1622085126500170242, guid: 11ebe51b3bc69471e993663e5a83442d, type: 3}
+    LevelKey: 816064
   - Level: {fileID: 2257133398845428287, guid: e1ff69236e51043a5b54f1d42a61ed93, type: 3}
-    LevelKey: 230849
+    LevelKey: 207143

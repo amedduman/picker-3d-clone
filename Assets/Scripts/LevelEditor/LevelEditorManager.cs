@@ -80,8 +80,10 @@
             } 
             else 
             {
-                Debug.LogWarning($"A problem occurred while trying to generate {_generatedLevel.name}");
+                Debug.LogWarning("A problem occurred while trying to generate new level");
             }
+
+            RemoveExistingLevels();
         }
 
         [PropertySpace(10)]
@@ -112,6 +114,8 @@
         void ApplyChangesToPrefab()
         {
             PrefabUtility.ApplyPrefabInstance(_loadedLevel, InteractionMode.UserAction);
+
+            RemoveExistingLevels();
         }
     }
 }
