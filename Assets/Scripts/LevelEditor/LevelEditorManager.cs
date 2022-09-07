@@ -58,6 +58,23 @@
         }
 
         [PropertySpace(10)]
+        [Button]
+        void SetLevelLength(float length)
+        {
+            var level = GetLevel();
+            if (level == null) return;
+            if(length < 0) length = 10;
+            var roadScale = level.Road.transform.localScale;
+            level.Road.transform.localScale = new Vector3(roadScale.x, roadScale.y, length); 
+        }    
+
+        LevelEntity GetLevel()
+        {
+            var level = _isGenerating == true ? _generatedLevel : _loadedLevel;
+            return level.GetComponent<LevelEntity>();
+        }
+
+        [PropertySpace(10)]
         [ShowIf(nameof(_isGenerating))]
         [Button]
         void SaveNewLevel()

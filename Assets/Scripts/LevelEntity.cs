@@ -7,6 +7,8 @@
 
     public class LevelEntity : MonoBehaviour
     {
+        public GameObject Road;
+
         [SerializeField] LevelKeyGenerator _keyGenerator;
         public Transform LevelEnd;
         [ReadOnly] public int Key = -1;
