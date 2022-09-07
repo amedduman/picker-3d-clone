@@ -158,9 +158,9 @@ MonoBehaviour:
   - {fileID: 451015058583194238, guid: 6a99b2ff5b61141b9a8ad06a9e4c2113, type: 3}
   - {fileID: 4339978687113562378, guid: 387e30a173a944359a66ae21b68d9d00, type: 3}
   - {fileID: 7756981789360833478, guid: e51b87c85ece54e8eb3b0c8bc53f208f, type: 3}
-  _levelPrefab: {fileID: 6546081843265235998, guid: 8af8a14e5e52f401b957ed9fa57d519b,
+  _levelPrefab: {fileID: 7170923515161274037, guid: 2a749fde92b9449299ee3744e496f0b0,
     type: 3}
-  _levelPrefabToGenerateFrom: {fileID: 6546081843265235998, guid: 8af8a14e5e52f401b957ed9fa57d519b,
+  _levelPrefabToGenerateFrom: {fileID: 6546081843265235998, guid: a7b26a89cdaa54280960f111e36c57f0,
     type: 3}
   _selectedCollectableGroup: {fileID: 0}
 --- !u!4 &1681629457
