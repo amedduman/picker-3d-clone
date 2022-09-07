@@ -3,10 +3,11 @@
     using UnityEngine;
     using TMPro;
     using DG.Tweening;
+    using UnityEngine.Serialization;
 
     public class LevelEndPool : MonoBehaviour
     {
-        [SerializeField] int _necessaryCollectableCount = 10;
+        [FormerlySerializedAs("_necessaryCollectableCount")] public int NecessaryCollectableCount = 10;
         [SerializeField] TextMeshPro _collectedCollectableCountText;
         [SerializeField] TextMeshPro _targetCollectableCountText;
         [SerializeField] GameObject _ground;
@@ -29,7 +30,7 @@
 
         void Start()
         {
-            _targetCollectableCountText.text = _necessaryCollectableCount.ToString();
+            _targetCollectableCountText.text = NecessaryCollectableCount.ToString();
             _collectedCollectableCountText.text = "0";
         }
 
@@ -80,7 +81,7 @@
 
         bool HasWon()
         {
-           return _collectedCollectable >= _necessaryCollectableCount;
+           return _collectedCollectable >= NecessaryCollectableCount;
         }
 
         void HandleNextLevelButtonPressed()

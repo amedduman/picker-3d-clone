@@ -88,6 +88,16 @@
             level.LevelEndPoolObject.position = lvlEndPos;
         }    
 
+        [PropertySpace(5)]
+        [Button]
+        void SetRequiredCollectables(int count)
+        {
+            var level = GetLevel();
+            if (level == null) return;
+            if(count <= 0) count = 1;
+            level.LevelEndPoolObject.GetComponentInChildren<LevelEndPool>().NecessaryCollectableCount = count; 
+        }
+
         LevelEntity GetLevel()
         {
             var level = _isGenerating == true ? _generatedLevel : _loadedLevel;
@@ -143,8 +153,6 @@
         void ApplyChangesToPrefab()
         {
             PrefabUtility.ApplyPrefabInstance(_loadedLevel, InteractionMode.UserAction);
-
-            RemoveExistingLevels();
         }
     }
 }

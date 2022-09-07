@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelListSo: {fileID: 11400000, guid: 79b37706fcec0429394cf4cc9bc9e793, type: 2}
-  _levelCountToLoadAtSameTime: 4
+  _levelCountToLoadAtSameTime: 6
   _isDebug: 0
   _levelToLoadInDebugMode: 1
 --- !u!1 &292881829 stripped

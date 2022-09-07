@@ -150,11 +150,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095307b45e8104afca20f46b4f5fa50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mode: 1
+  _mode: 0
   _levelList: {fileID: 11400000, guid: 79b37706fcec0429394cf4cc9bc9e793, type: 2}
   _levelPrefab: {fileID: 6546081843265235998, guid: 8af8a14e5e52f401b957ed9fa57d519b,
     type: 3}
-  _levelPrefabToGenerateFrom: {fileID: 8958315254126580687, guid: eebbec2da34964574bcf29e20cd6a9ce,
+  _levelPrefabToGenerateFrom: {fileID: 6546081843265235998, guid: 8af8a14e5e52f401b957ed9fa57d519b,
     type: 3}
 --- !u!4 &1681629457
 Transform:
