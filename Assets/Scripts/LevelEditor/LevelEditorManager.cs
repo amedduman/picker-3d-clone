@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Collections;
+    using System.Collections.Generic;
     using UnityEngine;
     using Sirenix.OdinInspector;
     using UnityEditor;
@@ -13,6 +14,8 @@
 
         [ShowIf(nameof(_isGenerating))] [FoldoutGroup("Required")] [SerializeField]
         LevelListData _levelList;
+        [FoldoutGroup("Required")] [SerializeField]
+        GameObject[] _collectableGroups;
 
         [ValueDropdown(nameof(GetAllLevels), IsUniqueList = true)]
         [HideIf(nameof(_isGenerating))] [SerializeField]
@@ -22,11 +25,14 @@
         [ShowIf(nameof(_isGenerating))] [SerializeField]
         GameObject _levelPrefabToGenerateFrom;
 
+        [ValueDropdown(nameof(GetAllCollectableGroups), IsUniqueList = true)] [SerializeField]
+        GameObject _selectedCollectableGroup;
+
         bool _isGenerating;
         GameObject _loadedLevel;
         GameObject _generatedLevel;
 
-        private static IEnumerable GetAllLevels()
+        IEnumerable GetAllLevels()
         {
             var root = "Assets/Levels/";
 
@@ -34,6 +40,23 @@
                 .Where(x => x.StartsWith(root))
                 .Select(x => x.Substring(root.Length))
                 .Select(x => new ValueDropdownItem(x, UnityEditor.AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(root + x)));
+        }
+
+        IEnumerable GetAllCollectableGroups()
+        {
+            List<GameObject> collectableGroups = new List<GameObject>();
+
+            var level = GetLevel();
+            if(level == null) return null;
+
+            var parent = level.CollectablesParent;
+
+            for (int i = 0; i < parent.childCount; i++)
+            {
+                collectableGroups.Add(parent.GetChild(i).gameObject);
+            }
+
+            return collectableGroups;
         }
 
         enum LevelEditorModes
@@ -96,6 +119,32 @@
             if (level == null) return;
             if(count <= 0) count = 1;
             level.LevelEndPoolObject.GetComponentInChildren<LevelEndPool>().NecessaryCollectableCount = count; 
+        }
+
+        [PropertySpace(5)]
+        [Button]
+        void AddCollectable(int collectableIndex)
+        {
+            var level = GetLevel();
+            if(level  == null) return;
+            collectableIndex = Mathf.Clamp(collectableIndex, 0, _collectableGroups.Length - 1);
+            var col = PrefabUtility.InstantiatePrefab(_collectableGroups[collectableIndex],level.CollectablesParent);
+        } 
+
+        [PropertySpace(5)]
+        [Button]
+        void ChangeSelectedCollectableGroupRotPos(Vector3 pos, Vector3 rot)
+        {
+            _selectedCollectableGroup.transform.position = pos;
+            _selectedCollectableGroup.transform.rotation = Quaternion.Euler(rot);
+        }
+
+        [PropertySpace(5)]
+        [Button]
+        void RemoveSelectedCollectableGroup()
+        {
+            DestroyImmediate(_selectedCollectableGroup.gameObject);
+            _selectedCollectableGroup = null;
         }
 
         LevelEntity GetLevel()

@@ -12,6 +12,7 @@
         [SerializeField] LevelKeyGenerator _keyGenerator;
         public Transform LevelEnd;
         public Transform LevelEndPoolObject;
+        public Transform CollectablesParent;
         [ReadOnly] public int Key = -1;
 
 
